@@ -1,7 +1,7 @@
 const events = require('express').Router();
 const db = require('../models');
 const { Event } = db;
-const { Op } = require('sequalize');
+const { Op } = require('sequelize');
 
 events.get('/', async (req, res) =>{
     try {

@@ -5,7 +5,7 @@ const app = express()
 
 //Controllers
 const bandsController = require('./controllers/band_controller');
-const eventsContrller = require('./controllers/events_controller');
+const eventsController = require('./controllers/events_controller');
 
 
 // CONFIGURATION / MIDDLEWARE
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }))
 
 // controller setup
 app.use('/bands', bandsController);
-app.use('/events', eventsContrller);
+app.use('/events', eventsController);
 
 // ROOT
 app.get('/', (req, res) => {
