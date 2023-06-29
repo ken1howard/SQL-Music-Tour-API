@@ -5,13 +5,14 @@ const { Op } = require('sequelize');
 
 bands.get('/', async (req, res) =>{
     try {
-        const searchTerm = req.query.name ? req.query.name : '';
+        const { name = '', limit= 3, offset= 0 } = req.query;
         const foundBands = await Bands.findall({
             order: [['available_start_time', 'ASC']],
             where: {
-                name: { [Op.like]: `%${searchTerm}%`}
-            }
-
+                name: { [Op.like]: `%${name}%`}
+            },
+            limit,
+            offset
         });
         res.status(200).json(foundBands);
     } catch(e) {
