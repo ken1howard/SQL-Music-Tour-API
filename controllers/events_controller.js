@@ -1,6 +1,6 @@
 const events = require('express').Router();
 const db = require('../models');
-const { Event } = db;
+const { Event, MeetGreet, Band } = db;
 const { Op } = require('sequelize');
 
 events.get('/', async (req, res) =>{
@@ -21,11 +21,22 @@ events.get('/', async (req, res) =>{
     }
 });
 
-events.get('/:id', async (req, res) => {
-    const { id } = req.params;
+events.get('/:name', async (req, res) => {
+    const { name } = req.params;
     try {
         const foundEvent = await Event.findOne({
-            where: { event_id: id }
+            where: { name  },
+            include: {
+                model: MeetGreet,
+                as: 'meet_greets',
+                attrinutes: {
+                    exclude: [ 'event_id', 'band_id']
+                },
+                include: {
+                    model: Band,
+                    as: 'band'
+                }
+            }
         });
         if (foundEvent){
             res.status(404).json({message: 'Could not find band'})

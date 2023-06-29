@@ -7,6 +7,7 @@ const app = express()
 const bandsController = require('./controllers/band_controller');
 const eventsController = require('./controllers/events_controller');
 const stagesController = require('./controllers/stages_controller');
+const { sequelize } = require('./models');
 
 
 // CONFIGURATION / MIDDLEWARE
@@ -29,7 +30,11 @@ app.get('/', (req, res) => {
 // LISTEN
 app.listen(process.env.PORT, () => {
     console.log(`🎸 Rockin' on port: ${process.env.PORT}`)
-})
+});
+
+//sequelize.sync().then(() => {
+   // console.log('Synchronized the db')
+//})
 
 /* SEQUELIZE CONNECTION
 const sequelize = new Sequelize(process.env.PG_URI)

@@ -21,11 +21,11 @@ stages.get('/', async (req, res) =>{
     }
 });
 
-stages.get('/:id', async (req, res) => {
-    const { id } = req.params;
+stages.get('/:name', async (req, res) => {
+    const { name } = req.params;
     try {
         const foundStage = await Stage.findOne({
-            where: { event_id: id }
+            where: { name }
         });
         if (foundStage){
             res.status(404).json({message: 'Could not find band'})
