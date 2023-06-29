@@ -2,21 +2,21 @@
   "development": {
     "username": "root",
     "password": "Malik852",
-    "database": "database_development",
+    "database": "Tour",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "root",
     "password": "Malik852",
-    "database": "database_test",
+    "database": "Tour",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "root",
     "password": "Malik852",
-    "database": "database_production",
+    "database": "Tour",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
